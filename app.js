@@ -387,6 +387,11 @@ document.getElementById("profile-btn").addEventListener("click", () => {
   // Could open a profile dropdown — for now just a placeholder
 });
 
+// ─── Theme Toggle ────────────────────────────────────────────────────
+document.getElementById("theme-toggle").addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+});
+
 // ─── Init ────────────────────────────────────────────────────────────
 function init() {
   renderQuestion();
