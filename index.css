@@ -256,8 +256,8 @@ html, body {
   color: var(--text-muted);
 }
 
-.status-icon {
-  font-size: 14px;
+.status-icon-svg {
+  color: var(--text-muted);
 }
 
 .question-body {
