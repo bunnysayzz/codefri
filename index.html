@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CodeFri - Online Coding Assessment Platform" />
+  <title>CodeFri - Coding Assessment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <!-- ============ TOP BAR ============ -->
+  <header id="top-bar">
+    <div class="top-bar-left">
+      <!-- empty spacer -->
+    </div>
+    <div class="top-bar-center">
+      <span class="duration-icon">⏱</span>
+      <span class="duration-label">Duration</span>
+      <span id="timer" class="timer">00:59:24</span>
+    </div>
+    <div class="top-bar-right">
+      <button id="profile-btn" class="icon-btn" aria-label="Profile">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-7 8-7s8 3 8 7"/></svg>
+      </button>
+      <button id="end-btn" class="end-btn">END</button>
+    </div>
+  </header>
+
+  <!-- ============ MAIN CONTENT ============ -->
+  <main id="main-content">
+    <!-- ---- LEFT: Question Panel ---- -->
+    <section id="question-panel" class="panel">
+      <div class="question-header">
+        <div class="question-nav">
+          <span class="question-label">Question No. <span id="q-current">1</span> / <span id="q-total">2</span></span>
+          <button id="prev-q" class="nav-arrow" aria-label="Previous question">&lt;</button>
+          <button id="next-q" class="nav-arrow" aria-label="Next question">&gt;</button>
+        </div>
+        <div class="question-status">
+          <span class="status-icon">✿</span>
+          <span>Status: <strong id="q-status">Strong</strong></span>
+        </div>
+      </div>
+
+      <div id="question-body" class="question-body">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- ---- Resizer ---- -->
+    <div id="panel-resizer" class="resizer"></div>
+
+    <!-- ---- RIGHT: Code Panel ---- -->
+    <section id="code-panel" class="panel">
+      <!-- Code toolbar -->
+      <div class="code-toolbar">
+        <div class="lang-select-wrapper">
+          <select id="lang-select" aria-label="Select language">
+            <option value="java" selected>JAVA</option>
+            <option value="cpp">CPP</option>
+            <option value="c">C</option>
+            <option value="javascript">JAVASCRIPT</option>
+          </select>
+        </div>
+        <div class="code-actions">
+          <button id="submit-btn" class="btn btn-outline">Submit Code</button>
+          <button id="run-btn" class="btn btn-filled">Run</button>
+        </div>
+      </div>
+
+      <!-- Code editor -->
+      <div id="code-editor-wrapper" class="code-editor-wrapper">
+        <div class="line-numbers" id="line-numbers"></div>
+        <textarea id="code-editor" class="code-editor" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off"></textarea>
+      </div>
+
+      <!-- Test cases -->
+      <div class="testcase-section">
+        <div class="testcase-tabs">
+          <button class="tab-btn active" data-case="0">Case 1</button>
+          <button class="tab-btn" data-case="1">Case 2</button>
+          <button class="tab-btn" data-case="2">Case 3</button>
+          <button id="close-testcase" class="close-tab" aria-label="Close test cases">×</button>
+        </div>
+        <div id="testcase-content" class="testcase-content">
+          <div class="tc-group">
+            <label class="tc-label">Input</label>
+            <textarea id="tc-input" class="tc-textarea" rows="3"></textarea>
+          </div>
+          <div class="tc-group">
+            <label class="tc-label">Expected Output</label>
+            <textarea id="tc-output" class="tc-textarea" rows="2"></textarea>
+          </div>
+        </div>
+        <div class="testcase-actions">
+          <button id="test-btn" class="btn btn-dark">Test Case</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ RESULT MODAL ============ -->
+  <div id="result-modal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <h3 id="modal-title">Test Results</h3>
+      <div id="modal-body"></div>
+      <button id="modal-close" class="btn btn-filled">Close</button>
+    </div>
+  </div>
+
+  <!-- ============ SUBMIT MODAL ============ -->
+  <div id="submit-modal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content submit-modal-content">
+      <h3>Submit Code?</h3>
+      <p>Are you sure you want to submit your code? This action cannot be undone.</p>
+      <div class="modal-actions">
+        <button id="submit-cancel" class="btn btn-outline">Cancel</button>
+        <button id="submit-confirm" class="btn btn-filled">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ END MODAL ============ -->
+  <div id="end-modal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content submit-modal-content">
+      <h3>End Assessment?</h3>
+      <p>Are you sure you want to end the assessment? Unanswered questions will be marked as incomplete.</p>
+      <div class="modal-actions">
+        <button id="end-cancel" class="btn btn-outline">Cancel</button>
+        <button id="end-confirm" class="btn btn-danger">End</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
