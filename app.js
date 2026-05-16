@@ -361,8 +361,19 @@ document.addEventListener("mousemove", (e) => {
   if (!isResizing) return;
   const containerWidth = document.getElementById("main-content").offsetWidth;
   const newWidth = (e.clientX / containerWidth) * 100;
-  if (newWidth > 20 && newWidth < 70) {
-    $questionPanel.style.width = newWidth + "%";
+  if (newWidth >= 0 && newWidth < 70) {
+    // Snap to fully hidden if below 5%
+    if (newWidth < 5) {
+      $questionPanel.style.width = "0%";
+      $questionPanel.style.overflow = "hidden";
+      $questionPanel.style.minWidth = "0";
+      $questionPanel.style.borderRight = "none";
+    } else {
+      $questionPanel.style.width = newWidth + "%";
+      $questionPanel.style.overflow = "";
+      $questionPanel.style.minWidth = "";
+      $questionPanel.style.borderRight = "";
+    }
   }
 });
 

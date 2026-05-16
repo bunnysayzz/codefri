@@ -254,9 +254,10 @@ body.dark .line-numbers {
 
 #question-panel {
   width: 42%;
-  min-width: 280px;
+  min-width: 0;
   border-right: 1px solid var(--border);
   background: var(--surface);
+  transition: width 0.05s ease;
 }
 
 #code-panel {
