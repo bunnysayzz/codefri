@@ -393,9 +393,13 @@ document.querySelectorAll(".modal-backdrop").forEach(bd => {
   });
 });
 
-// ─── Profile button ──────────────────────────────────────────────────
+// ─── Profile button → Fullscreen Toggle ─────────────────────────────
 document.getElementById("profile-btn").addEventListener("click", () => {
-  // Could open a profile dropdown — for now just a placeholder
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch(() => {});
+  } else {
+    document.exitFullscreen().catch(() => {});
+  }
 });
 
 // ─── Theme Toggle ────────────────────────────────────────────────────
